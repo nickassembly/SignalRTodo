@@ -4,6 +4,8 @@ builder.Services.AddSpaStaticFiles(configure => {
     configure.RootPath = "wwwroot";
 });
 
+builder.Services.AddSingleton<InMemoryToDoRepository, InMemoryToDoRepository>();
+
 var app = builder.Build();
 
 app.UseSpaStaticFiles();
