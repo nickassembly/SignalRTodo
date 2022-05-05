@@ -31,7 +31,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class HomeView extends Vue {
   lists: any[] = [];
-  // p1 32:30
+
   demoList() {
     this.lists.push({id: 0, listName: "Foo", completed: 5, pending: 10});
     this.lists.push({id: 1, listName: "Bar", completed: 15, pending: 10});
@@ -39,8 +39,6 @@ export default class HomeView extends Vue {
     this.lists.push({id: 3, listName: "Laa", completed: 30, pending: 20}); 
   }
 
-  created() {
-    this.demoList();
-  }
+
 }
 </script>

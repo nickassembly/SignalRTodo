@@ -1,17 +1,33 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSpaStaticFiles(configure => {
+// TODO: how to configure loggined in .net 6?
+
+// 1:32
+
+builder.Services.AddSpaStaticFiles(configure =>
+{
     configure.RootPath = "wwwroot";
 });
 
-builder.Services.AddSingleton<InMemoryToDoRepository, InMemoryToDoRepository>();
+builder.Services.AddSignalR();
+
+builder.Services.AddSingleton<IToDoRepository, InMemoryToDoRepository>();
 
 var app = builder.Build();
 
-app.UseSpaStaticFiles();
-app.UseSpa(config => 
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
 {
-  config.UseProxyToSpaDevelopmentServer("http://localhost:8080");
+    endpoints.MapHub<ToDoHub>("/hubs/todo");
+});
+
+app.UseSpaStaticFiles();
+
+app.UseSpa(config =>
+{
+    config.UseProxyToSpaDevelopmentServer("http://localhost:8080");
 });
 
 app.Run();
+
