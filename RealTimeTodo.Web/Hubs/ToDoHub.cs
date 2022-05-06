@@ -9,9 +9,11 @@ public class ToDoHub : Hub
         this.todoRepository = todoRepository;
     }
 
-    public Task<List<ToDoList>> GetLists()
+    public async Task GetLists()
     {
-        return todoRepository.GetLists();
+        var results = await todoRepository.GetLists();
+
+       await Clients.Caller.SendAsync("updatedToDoList", results);
     }
 
 }
