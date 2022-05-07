@@ -12,7 +12,7 @@ public class InMemoryToDoRepository : IToDoRepository
 
     public Task<List<ToDoList>> GetLists()
     {
-       return Task.FromResult(Lists);
+       return Task.FromResult(Lists.Select(p => p.GetMinimal()));
     }
 }
 

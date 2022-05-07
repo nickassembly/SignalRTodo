@@ -34,6 +34,26 @@ export default class ToDoService {
         setTimeout(() => this.getLists(), 500);
        }
     }
+
+    getListData(id: number) {
+
+    }
+
+    subscribeToListUpdates(id: number) {
+
+    }
+
+    unsubscribeFromListUpdates(id: number) {
+        
+    }
+
+    addToDoItem(listId: number, text: string) {
+
+    }
+
+    toggleToDoItem(listId: number, itemId: number) {
+
+    }
 }
 
 export const ConnectionServices: PluginObject<any> = {
