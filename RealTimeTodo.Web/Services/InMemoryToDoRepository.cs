@@ -10,7 +10,7 @@ public class InMemoryToDoRepository : IToDoRepository
         Lists.Add(new ToDoList() { Id = 3, Name = "Fail", Items = new List<ToDoItem>()});
     }
 
-    public Task<List<ToDoList>> GetLists()
+    public Task<IEnumerable<ToDoListMinimal>> GetLists()
     {
        return Task.FromResult(Lists.Select(p => p.GetMinimal()));
     }

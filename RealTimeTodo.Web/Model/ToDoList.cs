@@ -7,9 +7,9 @@ public class ToDoList
     public int Pending => Items.Count(p => !p.IsCompleted);
     public int Completed => Items.Count(p => p.IsCompleted);
 
-    public ToDoList GetMinimal() 
+    public ToDoListMinimal GetMinimal() 
     {
-        return new ToDoList() {
+        return new ToDoListMinimal() {
             Id = Id,
             Name = Name,
             Pending = Pending,

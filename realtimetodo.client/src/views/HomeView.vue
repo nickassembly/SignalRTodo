@@ -17,8 +17,8 @@
              {{l.name}}
             </router-link>
            </td>
-         <td>{{l.items | pendingCount}}</td>
-         <td>{{l.items | completedCount}}</td>
+         <td>{{l.pending }}</td>
+         <td>{{l.completed }}</td>
        </tr>
       </tbody>
     </table>
@@ -29,16 +29,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
-filters: {
-  pendingCount: (value: any) => {
-    const r = value.filter((p: any) => !p.isCompleted);
-    return r.length;
-  },
-    completedCount: (value: any) => {
-    const r = value.filter((p: any) => p.isCompleted);
-    return r.length;
-  },
-},
 })
 
 export default class HomeView extends Vue {
