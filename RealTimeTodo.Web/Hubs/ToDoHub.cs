@@ -1,6 +1,8 @@
 
 using Microsoft.AspNetCore.SignalR;
 
+// 25:00
+
 public class ToDoHub : Hub
 {
     private readonly IToDoRepository todoRepository;
