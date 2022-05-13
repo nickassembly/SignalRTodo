@@ -17,7 +17,8 @@ export default class ToDoService {
             .withUrl("/hubs/todo")
             .build();
 
-        this.connection.on("updatedToDoList", (values: any[]) => this.events.emit("updatedToDoList", values));
+        this.connection.on("UpdatedToDoList", (values: any[]) => this.events.emit("updatedToDoList", values));
+        this.connection.on("UpdatedListData", (value: any) => this.events.emit("updatedListData", value));
     }
 
     async start() {
@@ -53,7 +54,7 @@ export default class ToDoService {
 
     unsubscribeFromCountUpdates() {
         if (this.connection.state === HubConnectionState.Connected) {
-            this.connection.send("UnsubscribeToCountUpdates");
+            this.connection.send("UnsubscribeFromCountUpdates");
         }
         else {
             setTimeout(() => this.unsubscribeFromCountUpdates(), 500);
@@ -71,7 +72,7 @@ export default class ToDoService {
 
     unsubscribeFromListUpdates(id: number) {
         if (this.connection.state === HubConnectionState.Connected) {
-            this.connection.send("UnsubscribeToListUpdates");
+            this.connection.send("UnsubscribeFromListUpdates");
         }
         else {
             setTimeout(() => this.unsubscribeFromListUpdates(id), 500);

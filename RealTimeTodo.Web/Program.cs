@@ -1,8 +1,7 @@
+// TODO: Problem setting up logging in .Net 6 need to fix
+// SignalR issue, when adding item to list, does not display until screen is refreshed
+
 var builder = WebApplication.CreateBuilder(args);
-
-// TODO: how to configure loggined in .net 6?
-
-// 1:32
 
 builder.Services.AddSpaStaticFiles(configure =>
 {

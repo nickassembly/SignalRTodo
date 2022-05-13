@@ -30,7 +30,7 @@ public class ToDoHub : Hub
         await Groups.AddToGroupAsync(Context.ConnectionId, "Counts");
     }
 
-     public async Task UnsubscribeToCountUpdates()
+     public async Task UnsubscribeFromCountUpdates()
     {
         await Groups.RemoveFromGroupAsync(Context.ConnectionId, "Counts");
     }
@@ -41,13 +41,13 @@ public class ToDoHub : Hub
         await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
     }
 
-     public async Task UnsubscribeToListUpdates(int listId)
+     public async Task UnsubscribeFromListUpdates(int listId)
     {
          var groupName = ListIdToGroupName(listId);
         await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
     }
 
-    public async Task AddToDoList(int listId, string text)
+    public async Task AddToDoItem(int listId, string text)
     {
        await todoRepository.AddToDoItem(listId, text);
 

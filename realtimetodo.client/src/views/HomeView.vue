@@ -41,8 +41,17 @@ export default class HomeView extends Vue {
     });
 
      await this.$connectionService.getLists();
+     await this.$connectionService.subscribeToCountUpdates();
   }
 
+  beforeUnmount() {
+   this.$connectionService.unsubscribeFromCountUpdates();
+ }
+
+ destroyed() {
+   console.log("Deactivated home");
+   this.$connectionService.unsubscribeFromCountUpdate();
+ }
 
 }
 </script>
